@@ -1,0 +1,126 @@
+<?php
+$comp_model = new SharedController;
+$page_element_id = "edit-page-" . random_str();
+$current_page = $this->set_current_page_link();
+$csrf_token = Csrf::$token;
+$data = $this->view_data;
+//$rec_id = $data['__tableprimarykey'];
+$page_id = $this->route->page_id;
+$show_header = $this->show_header;
+$view_title = $this->view_title;
+$redirect_to = $this->redirect_to;
+?>
+<section class="page" id="<?php echo $page_element_id; ?>" data-page-type="edit"  data-display-type="" data-page-url="<?php print_link($current_page); ?>">
+    <?php
+    if( $show_header == true ){
+    ?>
+    <div  class="bg-light p-3 mb-3">
+        <div class="container">
+            <div class="row ">
+                <div class="col ">
+                    <h4 class="record-title">Edit  Masyarakat</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    }
+    ?>
+    <div  class="">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-7 comp-grid">
+                    <?php $this :: display_page_errors(); ?>
+                    <div  class="bg-light p-3 animated fadeIn page-content">
+                        <form novalidate  id="" role="form" enctype="multipart/form-data"  class="form page-form form-horizontal needs-validation" action="<?php print_link("masyarakat/edit/$page_id/?csrf_token=$csrf_token"); ?>" method="post">
+                            <div>
+                                <div class="form-group ">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="nama">Nama <span class="text-danger">*</span></label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="">
+                                                <input id="ctrl-nama"  value="<?php  echo $data['nama']; ?>" type="text" placeholder="Enter Nama"  required="" name="nama"  class="form-control " />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="control-label" for="jenis_kelamin">Jenis Kelamin <span class="text-danger">*</span></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <div class="">
+                                                    <input id="ctrl-jenis_kelamin"  value="<?php  echo $data['jenis_kelamin']; ?>" type="text" placeholder="Enter Jenis Kelamin"  required="" name="jenis_kelamin"  class="form-control " />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="control-label" for="tempat_tgl_lahir">Tempat Tgl Lahir <span class="text-danger">*</span></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <input id="ctrl-tempat_tgl_lahir" class="form-control datepicker  datepicker"  required="" value="<?php  echo $data['tempat_tgl_lahir']; ?>" type="datetime" name="tempat_tgl_lahir" placeholder="Enter Tempat Tgl Lahir" data-enable-time="false" data-min-date="" data-max-date="" data-date-format="Y-m-d" data-alt-format="d-m-Y" data-inline="false" data-no-calendar="false" data-mode="single" />
+                                                            <div class="input-group-append">
+                                                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <label class="control-label" for="alamat">Alamat <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="">
+                                                            <input id="ctrl-alamat"  value="<?php  echo $data['alamat']; ?>" type="text" placeholder="Enter Alamat"  required="" name="alamat"  class="form-control " />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label" for="pekerjaan">Pekerjaan <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <div class="">
+                                                                <input id="ctrl-pekerjaan"  value="<?php  echo $data['pekerjaan']; ?>" type="text" placeholder="Enter Pekerjaan"  required="" name="pekerjaan"  class="form-control " />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group ">
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <label class="control-label" for="no_hp">No Hp <span class="text-danger">*</span></label>
+                                                            </div>
+                                                            <div class="col-sm-8">
+                                                                <div class="">
+                                                                    <input id="ctrl-no_hp"  value="<?php  echo $data['no_hp']; ?>" type="text" placeholder="Enter No Hp"  required="" name="no_hp"  class="form-control " />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-ajax-status"></div>
+                                                    <div class="form-group text-center">
+                                                        <button class="btn btn-primary" type="submit">
+                                                            Update
+                                                            <i class="fa fa-send"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
